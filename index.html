@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundown Studio</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+</head>
+
+<body>
+
+    <style>
+        @font-face {
+            font-family: font;
+            src: url(NeueHaasDisplayMediu.ttf)
+        }
+
+        @font-face {
+            font-weight: 100;
+            font-family: font;
+            src: url(NeueHaasDisplayRoman.ttf)
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: font;
+        }
+
+        #loader {
+            height: 100vh;
+            width: 100%;
+            background-color: black;
+            top:0%;
+            position: fixed;
+            z-index: 999;
+            transition: all linear 1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+        }
+
+        #loader h1 {
+            position: absolute;
+            font-size: 8vh;
+            opacity: 0;
+            animation-name: loader;
+            animation-timing-function: ease;
+            animation-duration: 0.5s;
+            background: linear-gradient(to right, orange, orangered);
+            -webkit-background-clip: text;
+        }
+
+        #loader h1:nth-child(2) {
+            animation-name: loader;
+            animation-duration: .5s;
+            animation-delay: .5s;
+            animation-timing-function: ease;
+        }
+
+        #loader h1:nth-child(3) {
+            animation-name: loader;
+            animation-duration: .5s;
+            animation-delay: 1s;
+            animation-timing-function: ease;
+        }
+
+        @keyframes loader {
+
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+        #page1 {
+            min-height: 100vh;
+            width: 100%;
+            background-color: rgb(239 234 227);
+            position: relative;
+            margin-top: 0vh;
+            padding: 0vh 2vw;
+        }
+
+        nav {
+            height: 15vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1vw;
+        }
+
+        #logo {
+            height: 22vh;
+            width: 22vh;
+
+        }
+
+        .nav-part2 {
+            display: flex;
+            align-items: center;
+            gap: 0.8vw;
+        }
+
+        .nav-part2 a {
+            font-size: 18px;
+            text-decoration: none;
+            text-transform: capitalize;
+            color: rgb(0, 0, 0);
+            padding: 10px 22px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.364);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-weight: 100;
+
+        }
+
+        .nav-part2 a::after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            right: 0;
+            bottom: -100%;
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .nav-part2 a:hover::after {
+            bottom: 0%;
+            transition: all ease .3s;
+            overflow: visible;
+        }
+
+        .nav-part2 a:hover {
+            color: white;
+        }
+
+        #center-part {
+            height: 82vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            text-transform: capitalize;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.197);
+            padding-bottom: 8vh;
+        }
+
+        #center-left {
+            width: 22vw;
+            font-weight: 900;
+            line-height: 1;
+            font-size: 1vw;
+            text-transform: lowercase;
+        }
+
+        #center-right {
+            font-weight: bolder;
+            width: 40%;
+            font-size: 11vh;
+            line-height: 0.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+            text-transform: uppercase;
+            text-align: right;
+        }
+
+        #hero {
+            height: 40vw;
+            width: 40vw;
+            position: absolute;
+            right: 2%;
+            top: 39%;
+            filter: blur(20px);
+        }
+
+        #hero1 {
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(#FE340A, #fe330ae5);
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+            position: absolute;
+            animation-name: heroanime1;
+            animation-duration: 3s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            filter: blur(20px);
+
+        }
+
+        #hero2 {
+            height: 50%;
+            width: 50%;
+            border-radius: 50%;
+            background-image: linear-gradient(#FE340A, #fe330ae6);
+            position: absolute;
+            animation-name: heroanime2;
+            animation-duration: 3.5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            filter: blur(20px);
+        }
+
+        #hero3 {
+            height: 50%;
+            width: 50%;
+            border-radius: 50%;
+            background-image: linear-gradient(#FE340A, #fe330ae6);
+            position: absolute;
+            filter: blur(20px);
+            animation-name: heroanime3;
+            animation-duration: 3s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            filter: blur(20px);
+        }
+
+        @keyframes heroanime2 {
+            from {
+                transform: translate(0%, 20%);
+            }
+
+            to {
+                transform: translate(35%, -28%);
+            }
+
+        }
+
+        @keyframes heroanime1 {
+            from {
+                transform: translate(5%, -8%);
+            }
+
+            to {
+                transform: translate(0%, 0%);
+            }
+
+        }
+
+        @keyframes heroanime3 {
+            from {
+                transform: translate(-10%, -5%);
+            }
+
+            to {
+                transform: translate(0%, 0%);
+            }
+
+        }
+
+        #page1 video {
+            width: 100%;
+            margin-top: 8vh;
+            border-radius: 2vw;
+            position: relative;
+        }
+
+        #page2 {
+            min-height: 100vh;
+            width: 100%;
+            padding-top: 10vh;
+            position: relative;
+            background-color: rgb(239 234 227);
+        }
+
+        .animation {
+            white-space: nowrap;
+            overflow-x: scroll;
+        }
+
+        .animation::-webkit-scrollbar {
+            display: none;
+        }
+
+        .anime {
+            display: inline-block;
+            animation-name: animepart;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .anime h1 {
+            font-size: 18vh;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        #circle {
+            display: inline-block;
+            background-color: rgb(255, 0, 17);
+            margin-bottom: 2.5vh;
+            margin-left: 1.5vh;
+            margin-right: 1.5vh;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        @keyframes animepart {
+            from {
+                transform: translateX(0%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        #page2-bottom {
+            height: 80vh;
+            width: 100%;
+            margin-top: 20vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #page2-bottom-left {
+            margin-left: 12vh;
+            height: 94%;
+            width: 50%;
+            position: relative;
+            z-index: 1;
+        }
+
+        #page2-bottom-left h1 {
+            font-size: 8vh;
+            font-weight: bolder;
+
+        }
+
+        #page2-bottom-right {
+            height: 60%;
+            width: 20%;
+            margin-right: 12vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10vh;
+        }
+
+        #page2-bottom-right img {
+            width: 100%;
+            height: 55%;
+            border-radius: 1vh;
+        }
+
+        #page2-bottom-right p {
+            text-align: left;
+            font-weight: 100;
+            line-height: 1.5vw;
+        }
+
+        #effect1 {
+            height: 34vw;
+            width: 34vw;
+            background: linear-gradient(to top, rgb(255, 0, 17), #FF7B26);
+            border-radius: 50%;
+            position: absolute;
+            top: 8vh;
+            left: 30vh;
+            z-index: -2;
+            animation-name: effectanime1;
+            animation-timing-function: ease-in-out;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            filter: blur(20px);
+        }
+
+        @keyframes effectanime1 {
+
+            from {
+                transform: skewY(0deg);
+                transform: translate(10%, -15%);
+            }
+
+            to {
+                transform: skewY(-8deg);
+            }
+        }
+
+        #page3 {
+            min-height: 100vh;
+            width: 100%;
+            background-color: rgb(239 234 227);
+            position: relative;
+
+        }
+
+        .page3-heading {
+            height: 18vh;
+            width: 100%;
+            border-bottom: 0.2vh solid rgba(0, 0, 0, 0.199);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page3-heading h2 {
+            font-size: 7.5vh;
+            padding: 5vh 5vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page3-heading #elem {
+            height: 100%;
+            width: 100%;
+            background-color: #FF9831;
+            position: absolute;
+            top: -100%;
+            transition: all ease .3s;
+        }
+
+        .page3-heading:hover #elem {
+            top: 0%;
+        }
+
+        .heading-img {
+            height: 65vh;
+            width: 55vh;
+            position: fixed;
+            z-index: 2;
+            left: 92vh;
+            bottom: 2vh;
+            border-radius: 4vh;
+            display: none;
+            background-size: cover;
+            transition-property: all;
+            transition-timing-function: linear;
+            transition-duration: 1s;
+        }
+
+        #elem-container img {
+            background-size: cover;
+            width: 50vh;
+            height: 50vh;
+            display: none;
+        }
+
+        .phone-menu-icon {
+            font-size: 3vh;
+            border: 1px solid rgba(0, 0, 0, 0.244);
+            border-radius: 28px;
+            padding: 1.5vw;
+            display: block;
+            font-weight: lighter;
+            display: none;
+        }
+
+        .phone-menu-icon::after {
+            content: "Menu";
+        }
+
+        .phone-close-icon {
+            font-size: 6vh;
+            display: block;
+            font-weight: 100;
+            display: none;
+            z-index: 20;
+        }
+
+        @media(max-width:600px) {
+
+            #page1 {
+                min-height: 100vh;
+                width: 100%;
+                padding: 1.5vh 3vh;
+
+            }
+
+            #logo {
+                padding-top: 2vh;
+                padding-left: .5vh;
+            }
+
+            nav {
+                position: relative;
+                padding-top: 1.5vh;
+            }
+
+            .nav-part2 {
+                margin-right: 2vh;
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                background-color: rgb(239 234 227);
+                top: -10%;
+                z-index: 10;
+                gap: 4vh;
+                right: -10%;
+                transform: translateX(100%);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+            .phone-menu-icon {
+                display: block;
+                z-index: 15;
+            }
+
+            .show {
+                transform: translateX(0%);
+                opacity: 1;
+                visibility: visible;
+                pointer-events: all;
+                transition-property: all;
+                transition-timing-function: linear;
+                transition-duration: .7s;
+            }
+
+            #center-part {
+                height: 62vh;
+            }
+
+            #center-left {
+                width: 90vw;
+                font-size: 4vw;
+                position: relative;
+                top: 2vh;
+            }
+
+            #center-right {
+                font-size: 5vh;
+                position: absolute;
+                top: 24%;
+                right: 5%;
+
+            }
+
+            #page1 video {
+                object-fit: cover;
+                object-position: center;
+                height: 65vh;
+                width: 50vh;
+                margin-top: 5vh;
+                border-radius: 5vw;
+                position: absolute;
+                z-index: 9;
+            }
+
+            #page2 {
+                min-height: 100vh;
+            }
+
+            .animation {
+                margin-top: 45vh;
+            }
+
+            .anime h1 {
+                font-size: 8vh;
+            }
+
+            #circle {
+                margin-bottom: .5vh;
+                height: 30px;
+                width: 30px;
+            }
+
+            #page2-bottom {
+                margin-top: 9vh;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #page2-bottom-left {
+                margin-left: 2vh;
+                height: 50%;
+                width: 95%;
+            }
+
+            #page2-bottom-left h1 {
+                font-size: 4.7vh;
+            }
+
+            #page2-bottom-right {
+                height: 80%;
+                width: 80%;
+                margin-right: 12vh;
+                margin-top: 8vh;
+            }
+
+            #page2-bottom-right img {
+                width: 90%;
+                height: 95%;
+                position: relative;
+                z-index: 5;
+            }
+
+            #page2-bottom-right p {
+                padding-left: 2vh;
+                padding-top: 6vh;
+                text-align: left;
+                font-weight: 100;
+                line-height: 6vw;
+            }
+
+            #page3 {
+                min-height: 100vh;
+                width: 100%;
+                background-color: rgb(239 234 227);
+                position: relative;
+                margin-top: 20vh;
+
+            }
+
+            #effect1 {
+                height: 80vw;
+                width: 80vw;
+                top: 25vh;
+                left: 6.2vh;
+                animation-duration: 1.5s;
+            }
+
+            #hero {
+                height: 75vw;
+                width: 75vw;
+                right: 4%;
+                top: 70%;
+                filter: blur(20px);
+            }
+
+            #hero1 {
+                height: 80%;
+                width: 80%;
+                animation-duration: 3s;
+            }
+
+            #hero2 {
+                height: 80%;
+                width: 80%;
+                animation-duration: 3.5s;
+            }
+
+            #hero3 {
+                height: 80%;
+                width: 80%;
+                animation-duration: 3s;
+            }
+
+            .page3-heading {
+                height: 14vh;
+                border-bottom: none;
+            }
+
+            .page3-heading h2 {
+                font-size: 4vh;
+                position: relative;
+                bottom: 1vh;
+                right: 4vh;
+            }
+
+            .page3-heading #elem {
+                display: none;
+            }
+
+            .page3-heading:hover #elem {
+                top: 0%;
+                display: none;
+            }
+
+            .heading-img {
+                height: 0vh;
+                width: 0vh;
+                bottom: 0vh;
+                display: none;
+            }
+
+            #elem-container{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items:self-start;
+                margin-left: 3vh;
+
+            }
+
+            #elem-container img {
+                width: 45vh;
+                height: 65vh;
+                display: block;
+                border-radius: 2.5vh;
+            }
+        }
+    </style>
+    <div id="loader">
+        <h1>Environments</h1>
+        <h1>Experiences</h1>
+        <h1>Content</h1>
+    </div>
+    <div class="heading-img"></div>
+    <div id="main">
+        <div id="page1">
+            <nav>
+                <div id="nav-part1">
+                    <img id="logo" src="logo.svg">
+                </div>
+                <div class="nav-part2">
+                    <a class="nav-a" href="www.sundown_studio.com/www.sundown-studio.com/work.html">work</a>
+                    <a class="nav-a" href="www.sundown_studio.com (1)/www.sundown-studio.com/studio.html">studio</a>
+                    <a class="nav-a" href="https://www.instagram.com/sundown_stdio/" target="_blank">contact Us</a>
+                </div>
+
+
+                <div class="phone-menu-icon">
+                    <i id="bar" class="fa-solid fa-bars"></i>
+                </div>
+                <div class="phone-close-icon">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </nav>
+            <div id="center-part">
+                <div id="center-left">
+                    <h2>Sundown is a multi-disciplinary studio focused on creating unique, end-to-end experiences and
+                        environments.</h2>
+                </div>
+                <div id="center-right">
+                    <h1>spaces that inspire</h1>
+                </div>
+            </div>
+            <div id="hero">
+                <div id="hero1"></div>
+                <div id="hero2"></div>
+                <div id="hero3"></div>
+            </div>
+            <div id="vid">
+                <video autoplay loop muted src="vid.mp4"></video>
+            </div>
+        </div>
+        <div id="page2">
+            <div class="animation">
+                <div class="anime">
+                    <h1>environments</h1>
+                    <div id="circle"></div>
+                    <h1>experiences</h1>
+                    <div id="circle"></div>
+                    <h1>content</h1>
+                    <div id="circle"></div>
+                </div>
+                <div class="anime">
+                    <h1>environments</h1>
+                    <div id="circle"></div>
+                    <h1>experiences</h1>
+                    <div id="circle"></div>
+                    <h1>content</h1>
+                    <div id="circle"></div>
+                </div>
+                <div class="anime">
+                    <h1>environments</h1>
+                    <div id="circle"></div>
+                    <h1>experiences</h1>
+                    <div id="circle"></div>
+                    <h1>content</h1>
+                    <div id="circle"></div>
+                </div>
+            </div>
+            <div id="page2-bottom">
+                <div id="page2-bottom-left">
+                    <h1>We are a group of design-driven, goal-focused creators, producers, and designers who believe
+                        that the details make all the difference.</h1>
+                    <div id="effect1"></div>
+
+                </div>
+                <div id="page2-bottom-right">
+                    <img src="64d3dd9edfb41666c35b15d1_Holding_thumb-p-500.webp">
+                    <p>We love to create, we love to solve, we love to collaborate, and we love to turn amazing ideas
+                        into reality. We’re here to partner with you through every step of the process and know that
+                        relationships are the most important things we build.</p>
+                </div>
+
+            </div>
+
+            <div id="page3">
+                <div id="elem-container">
+                    <div img="1i.webp" class="page3-heading">
+                        <h2> Makers Studio HOI</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="1i.webp">
+                    <div img="2i.webp" class="page3-heading">
+                        <h2>50th Anniversary</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="2i.webp">
+                    <div img="3i.webp" class="page3-heading">
+                        <h2>Capezio NYC Flagship</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="3i.webp">
+                    <div img="4i.webp" class="page3-heading">
+                        <h2>Converse SoHo</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="4i.webp">
+                    <div img="5i.webp" class="page3-heading">
+                        <h2>NYFW Popup</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="5i.webp">
+                    <div img="6i.webp" class="page3-heading">
+                        <h2>Carmelo Anthony 7pm In Brooklyn Set</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="6i.webp">
+                    <div img="7i.webp" class="page3-heading">
+                        <h2>Kelce Super Bowl Party</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="7i.webp">
+                    <div img="8i.webp" class="page3-heading">
+                        <h2>Play New Kidvision</h2>
+                        <div id="elem"></div>
+                    </div>
+                    <img src="8i.webp">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script>
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('#main'),
+            smooth: true
+        });
+
+
+        let imgdiv = document.querySelector(".heading-img");
+
+        let main = document.getElementById("elem-container");
+
+        function image() {
+            main.addEventListener("mouseenter", function () {
+                imgdiv.style.display = "block";
+            });
+            main.addEventListener("mouseleave", function () {
+                imgdiv.style.display = "none";
+            });
+            let allheadings = document.querySelectorAll(".page3-heading");
+            console.log(allheadings);
+
+            allheadings.forEach(Element => {
+
+                let images = Element.getAttribute("img");
+                Element.addEventListener("mouseenter", function () {
+                    imgdiv.style.backgroundImage = `url(${images})`;
+                })
+            });
+        }
+        image();
+
+
+        let load = document.getElementById("loader");
+        setTimeout(function () {
+            load.style.top = "-120%";
+        }, 1500);
+
+        let menu_icon = document.querySelector(".phone-menu-icon");
+        let headings = document.querySelector(".nav-part2");
+        let close_icon = document.querySelector(".phone-close-icon");
+
+        menu_icon.addEventListener("click", function () {
+            headings.classList.toggle("show");
+            menu_icon.style.display = "none";
+            close_icon.style.display = "block";
+        })
+
+        close_icon.addEventListener("click", function () {
+            headings.classList.toggle("show");
+            menu_icon.style.display = "block";
+            close_icon.style.display = "none";
+        })
+    </script>
+</body>
+
+
+</html>
